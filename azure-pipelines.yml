@@ -17,10 +17,24 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
+# - task: HCLAppScanOnCloud@2
+#   inputs:
+#     AppSecTestService: 'HCL ASOC Connection Name'
+#     applications: 'f0c3feea-9697-490d-a54f-6366c40c7308'
+#     scanname: 'UnsafeBank & Vulnerable Web App'
+#     scantype: 'static'
+#     ScanSpeedOptions: 'simple'
+
+
 - task: HCLAppScanOnCloud@2
   inputs:
     AppSecTestService: 'HCL ASOC Connection Name'
-    applications: 'f0c3feea-9697-490d-a54f-6366c40c7308'
-    scanname: 'UnsafeBank & Vulnerable Web App'
+    applications: 'c3c59084-a799-49b4-afa9-1fe3572e0dee'
+    scanname: 'GitCriticalConCheck'
     scantype: 'static'
-    ScanSpeedOptions: 'simple'
+    OpenSourceScanOnly: true
+    ScanSpeedOptions: 'thorough'
+    FailBuildConfiguration: true
+    FailBuildChoice: 'conditionset'
+    buildfailCritical: true
+    buildfailconditionCritical: '0'
